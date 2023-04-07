@@ -1,5 +1,5 @@
 export const colors = {
-  buttons: '#ff8c52',
+  buttons: '#4AE488',
   grey1: '#43484d',
   grey2: '#5e6977',
   grey3: '#86939e',
@@ -7,19 +7,19 @@ export const colors = {
   grey5: '#e1e8ee',
   CardComment: '#86939e',
   cardbackground: 'white',
-  statusbar: '#ff8c52',
+  statusbar: '#4AE488',
   headerText: 'white',
 };
 
 export const parameters = {
   headerHeight: 50,
   styledButton: {
-    backgroundColor: '#ff8c52',
+    backgroundColor: '#4AE488',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 12,
     borderWidth: 1,
-    borderColor: '#ff8c52',
+    borderColor: '#4AE488',
     height: 50,
     paddingHorizontal: 20,
     width: '100%',
@@ -35,7 +35,7 @@ export const parameters = {
 };
 
 export const title = {
-  color: '#ff8c52',
+  color: '#4AE488',
   fontSize: 20,
   fontWeight: 'bold',
   marginTop: 10,
