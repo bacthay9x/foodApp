@@ -5,19 +5,23 @@ import {colors, parameters, title} from '../../global/styles';
 import {Icon, Button, SocialIcon} from 'react-native-elements';
 import * as Animatable from 'react-native-animatable';
 
-export default function SignInScreen() {
+export default function SignInScreen({navigation}) {
   const [textInput2Forcused, setTextInput2Forcused] = useState(false);
   const textInput1 = useRef(1);
   const textInput2 = useRef(2);
 
   return (
     <View style={styles.container}>
-      <Header title="Tài khoản của tôi" type="arrow-left" />
-      <View>
+      <Header
+        title="Tài khoản của tôi"
+        type="arrow-left"
+        navigation={navigation}
+      />
+      <View style={{alignItems: 'center', justifyContent: 'center'}}>
         <Text style={title}>Đăng nhập</Text>
       </View>
 
-      <View style={{marginTop: 40}}>
+      <View style={{marginTop: 30}}>
         <View style={styles.TextInput2}>
           <Animatable.View>
             <Icon
@@ -72,6 +76,9 @@ export default function SignInScreen() {
           title="ĐĂNG NHẬP"
           buttonStyle={parameters.styledButton}
           titleStyle={parameters.buttonTitle}
+          onPress={() => {
+            navigation.navigate('HomeScreen');
+          }}
         />
       </View>
       <View style={{alignItems: 'center', marginTop: 15}}>

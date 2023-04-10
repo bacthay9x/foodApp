@@ -36,8 +36,8 @@ export const parameters = {
 
 export const title = {
   color: '#4AE488',
-  fontSize: 20,
+  fontSize: 30,
   fontWeight: 'bold',
-  marginTop: 10,
+  marginTop: 20,
   marginLeft: 10,
 };
