@@ -8,11 +8,16 @@ import {
   FlatList,
   Pressable,
   Image,
+  Dimensions,
 } from 'react-native';
 import {Icon} from 'react-native-elements';
 import HomeHeader from '../components/HomeHeader';
 import {colors, parameters} from '../global/styles';
-import {fillterData} from '../global/Data';
+import {fillterData, restaurantsData} from '../global/Data';
+import FoodCard from '../components/FoodCard';
+import Countdown from 'react-native-countdown-component';
+
+const SCREEN_WIDTH = Dimensions.get('window').width;
 
 export default function HomeScreen() {
   const [deliverry, setDelivery] = useState(true);
@@ -21,7 +26,8 @@ export default function HomeScreen() {
     <View style={styles.container}>
       <HomeHeader />
       <ScrollView stickyHeaderIndices={[0]} showsVerticalScrollIndicator={true}>
-        <View>
+        <View
+          style={{backgroundColor: colors.cardbackground, paddingBottom: 10}}>
           <View
             style={{
               marginTop: 20,
@@ -133,6 +139,91 @@ export default function HomeScreen() {
         </View>
         <View style={styles.headerTextView}>
           <Text style={styles.headerText}>Free Ship Now</Text>
+        </View>
+        <View>
+          <View
+            style={{flexDirection: 'row', alignItems: 'center', marginTop: 20}}>
+            <Text
+              style={{
+                marginLeft: 15,
+                fontSize: 16,
+                marginTop: -10,
+                marginRight: 5,
+              }}>
+              Thời gian :
+            </Text>
+            <Countdown
+              until={3600}
+              size={14}
+              digitStyle={{backgroundColor: colors.lightOrange}}
+              digitTxtStyle={{color: colors.cardbackground}}
+              timeToShow={['M', 'S']}
+              timeLabels={{m: 'Phút', s: 'Giây'}}
+            />
+          </View>
+          <FlatList
+            showsHorizontalScrollIndicator={false}
+            style={{marginTop: 10, marginBottom: 10}}
+            horizontal={true}
+            data={restaurantsData}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({item}) => (
+              <View style={{marginRight: 10}}>
+                <FoodCard
+                  screenWidth={SCREEN_WIDTH * 0.8}
+                  images={item.images}
+                  restaurantName={item.restaurantName}
+                  farAway={item.farAway}
+                  businessAddress={item.businessAddress}
+                  averageReview={item.averageReview}
+                  numberofReview={item.numberOfReview}
+                />
+              </View>
+            )}
+          />
+        </View>
+        <View style={styles.headerTextView}>
+          <Text style={styles.headerText}>Chương trình khuyến mãi</Text>
+        </View>
+        <View>
+          <FlatList
+            showsHorizontalScrollIndicator={false}
+            style={{marginTop: 10, marginBottom: 10}}
+            horizontal={true}
+            data={restaurantsData}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({item}) => (
+              <View style={{marginRight: 10}}>
+                <FoodCard
+                  screenWidth={SCREEN_WIDTH * 0.8}
+                  images={item.images}
+                  restaurantName={item.restaurantName}
+                  farAway={item.farAway}
+                  businessAddress={item.businessAddress}
+                  averageReview={item.averageReview}
+                  numberofReview={item.numberOfReview}
+                />
+              </View>
+            )}
+          />
+        </View>
+        <View style={styles.headerTextView}>
+          <Text style={styles.headerText}>Các cửa hàng gần bạn</Text>
+        </View>
+        <View style={{width: SCREEN_WIDTH, paddingTop: 10}}>
+          {restaurantsData.map(item => (
+            <View key={item.id} style={{paddingBottom: 20}}>
+              <FoodCard
+                screenWidth={SCREEN_WIDTH * 0.95}
+                images={item.images}
+                restaurantName={item.restaurantName}
+                farAway={item.farAway}
+                businessAddress={item.businessAddress}
+                averageReview={item.averageReview}
+                numberofReview={item.numberOfReview}
+              />
+            </View>
+          ))}
         </View>
       </ScrollView>
     </View>
